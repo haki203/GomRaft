@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="184dp"
+        android:layout_height="226dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ong"
+        android:layout_marginTop="48dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="As Poly Student, Enter your Email"
+        android:textSize="14dp"
+        android:textStyle="normal"
+        android:textFontWeight="400"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="71dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="238dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Email"
+        android:textStyle="normal"
+        android:textFontWeight="400"
+        android:textSize="14dp"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="23dp"
+        android:text="In order to "
+        android:textColor="#FFFFFF"
+        android:textFontWeight="400"
+        android:textSize="14dp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0.655"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="102dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="14dp"
+        android:textSize="14dp"
+        android:textColor="#000000"
+        android:textFontWeight="400"
+        android:textStyle="normal"
+        android:gravity="center"
+        android:layout_marginEnd="100dp"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:background="@drawable/custom_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="227dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_button"
+        android:gravity="center"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="62dp"
+        android:text="Đăng ký tài khoản"
+        android:textAllCaps="false"
+        android:textStyle="normal"
+        android:textSize="14dp"
+        android:textColor="#000000"
+        android:textFontWeight="400"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.009" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="227dp"
+        android:layout_height="35dp"
+        android:textAllCaps="false"
+        android:textStyle="normal"
+        android:textSize="14dp"
+        android:textColor="#000000"
+        android:textFontWeight="400"
+        android:gravity="center"
+        android:layout_marginTop="31dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="62dp"
+        android:drawableLeft="@drawable/google"
+        android:paddingLeft="10dp"
+        android:paddingRight="15dp"
+        android:background="@drawable/custom_button"
+        android:text="Đăng nhập với Google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
