@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gomraft.dto.RegisterRequestDTO;
@@ -23,6 +24,7 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity {
     EditText editName, edtPass, edtEmail;
     Button btnDK;
+    TextView txtLog;
     IRetrofit iRetrofit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,12 @@ public class RegisterActivity extends AppCompatActivity {
         edtPass = findViewById(R.id.edtPass);
         edtEmail = findViewById(R.id.edtMail);
         btnDK = findViewById(R.id.btnDangKy);
+        txtLog = findViewById(R.id.txtLog);
         iRetrofit = RetrofitHelpers.createService(IRetrofit.class);
+    }
+    public void onLogClick(View view){
+        Intent res = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(res);
     }
     public void onRegisterClick(View view){
         String name = editName.getText().toString();

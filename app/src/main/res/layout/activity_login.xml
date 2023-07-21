@@ -4,141 +4,176 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="#F79D65"
     tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="184dp"
         android:layout_height="226dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ong"
-        android:layout_marginTop="48dp"/>
+/>
+
+
+    <EditText
+        android:id="@+id/edtMail"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_textinput"
+        android:hint="Email"
+        android:paddingLeft="30dp"
+        android:inputType="textPersonName"
+        android:textFontWeight="400"
+        android:textSize="18dp"
+        android:textColor="#CC3300"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:inputType="textPersonName"
+        android:hint="Password"
+        android:layout_marginTop="20dp"
+        android:textStyle="normal"
+        android:textColor="#CC3300"
+        android:textFontWeight="600"
+        android:background="@drawable/custom_textinput"
+        android:textSize="18dp"
+        android:paddingLeft="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtMail" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/custom_button"
+        android:gravity="center"
+        android:onClick="onLoginClick"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textFontWeight="600"
+        android:textSize="20dp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+
+    <Button
+        android:id="@+id/btnCs"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_button"
+        android:gravity="center"
+        android:onClick="onLoginClick"
+        android:text="Chọn cơ sở đào tạo"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textFontWeight="600"
+        android:textSize="20dp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="As Poly Student, Enter your Email"
-        android:textSize="14dp"
-        android:textStyle="normal"
+        android:text="Forgot Password?"
+        android:textColor="#CC3300"
         android:textFontWeight="400"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="71dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <EditText
-        android:id="@+id/edtMail"
-        android:layout_width="238dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Email"
+        android:textSize="18dp"
         android:textStyle="normal"
-        android:textFontWeight="400"
-        android:textSize="14dp"
-        android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.887"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-    <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="238dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Password"
-        android:layout_marginTop="10dp"
-        android:textStyle="normal"
-        android:textFontWeight="400"
-        android:textSize="14dp"
-        android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtMail" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword"
+        app:layout_constraintVertical_bias="0.365" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="23dp"
-        android:text="In order to "
-        android:textColor="#FFFFFF"
-        android:textFontWeight="400"
-        android:textSize="14dp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toStartOf="@+id/btnLogin"
-        app:layout_constraintHorizontal_bias="0.655"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="102dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="14dp"
-        android:textSize="14dp"
-        android:textColor="#000000"
+        android:text="Or Login with"
+        android:textSize="18dp"
+        android:textColor="#222222"
         android:textFontWeight="400"
         android:textStyle="normal"
-        android:onClick="onLoginClick"
-        android:gravity="center"
-        android:layout_marginEnd="100dp"
-        android:text="Continue"
-        android:textAllCaps="false"
-        android:background="@drawable/custom_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
-
-    <Button
-        android:id="@+id/btnDk"
-        android:layout_width="227dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/custom_button"
-        android:gravity="center"
-        android:layout_marginStart="62dp"
-        android:layout_marginEnd="62dp"
-        android:text="Đăng ký tài khoản"
-        android:textAllCaps="false"
-        android:textStyle="normal"
-        android:textSize="14dp"
-        android:textColor="#000000"
-        android:textFontWeight="400"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCs" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="227dp"
-        android:layout_height="35dp"
-        android:textAllCaps="false"
-        android:textStyle="normal"
-        android:textSize="14dp"
-        android:textColor="#000000"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="Don't have an account? "
+        android:textColor="#222222"
         android:textFontWeight="400"
-        android:gravity="center"
-        android:layout_marginTop="31dp"
-        android:layout_marginStart="62dp"
-        android:layout_marginEnd="62dp"
-        android:drawableLeft="@drawable/google"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp"
-        android:background="@drawable/custom_button"
-        android:text="Đăng nhập với Google"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18dp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toStartOf="@+id/txtRes"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDk" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/txtRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="68dp"
+        android:text="Register"
+        android:onClick="onResClick"
+        android:textColor="#CC3300"
+        android:textFontWeight="400"
+        android:textSize="18dp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/gg" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/fb" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

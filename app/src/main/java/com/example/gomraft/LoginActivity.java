@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gomraft.dto.LoginRequestDTO;
@@ -24,24 +25,23 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
     EditText edtMail, edtPassword;
     Button btndk, btnLogin;
+    TextView textRes;
     IRetrofit iRetrofit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        btndk = findViewById(R.id.btnDk);
+        textRes = findViewById(R.id.txtRes);
         btnLogin = findViewById(R.id.btnLogin);
         edtMail = findViewById(R.id.edtMail);
         edtPassword = findViewById(R.id.edtPassword);
         iRetrofit = RetrofitHelpers.createService(IRetrofit.class);
-        btndk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(i);
-            }
-        });
 
+    }
+
+    public void onResClick(View view){
+        Intent res = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(res);
     }
 
     public void onLoginClick(View view){
