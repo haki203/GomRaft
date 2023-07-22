@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item android:id="@+id/home" android:title="Trang chủ"
         android:icon="@drawable/vector_home"/>
     <item android:id="@+id/note" android:title="Lịch học"
         android:icon="@drawable/vector_notes"/>
-    <item android:id="@+id/coment" android:title="Comments"
+    <item android:id="@+id/comment" android:title="Comments"
         android:icon="@drawable/vector_comment"/>
-    <item android:id="@+id/user" android:title="Tiện ích"
+    <item android:id="@+id/tienich" android:title="Tiện ích"
+        android:icon="@drawable/vector_comment"/>
+    <item android:id="@+id/coment" android:title="Notification"
+        android:icon="@drawable/vector_thongbao"/>
+    <item android:id="@+id/user" android:title="Profile"
         android:icon="@drawable/vector_user"/>
+
 </menu>
