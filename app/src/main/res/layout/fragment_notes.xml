@@ -1,15 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.NotesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/fragmentScheduleHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp"
+        app:justifyContent="space_between"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:showDivider="end"
+        app:showDividerHorizontal="end">
 
-</FrameLayout>
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:alignItems="center"
+            app:flexDirection="row">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="24"
+                android:textColor="#212525"
+                android:textSize="40sp" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                app:flexDirection="column"
+                app:justifyContent="space_between">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Thứ 4"
+                    android:textStyle="bold"
+                    android:textColor="#212525"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="T1/2023"
+                    android:textStyle="bold"
+                    android:textColor="#212525"
+                    android:textSize="16sp" />
+
+            </com.google.android.flexbox.FlexboxLayout>
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:clickable="false"
+
+            android:text="Hôm nay"
+            android:textAllCaps="false"
+            android:textSize="16sp">
+
+        </com.google.android.material.button.MaterialButton>
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#EFEFF4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentScheduleHeader"
+       />
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        app:layout_constraintTop_toBottomOf="@+id/fragmentScheduleHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/toggleButtonLayout"
+        android:layout_marginTop="28dp"
+        app:strokeColor='#EFEFF4'
+        app:strokeWidth="1dp"
+        app:singleSelection="true"
+        app:checkedButton="@id/btnScheduleStudy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/btnScheduleStudy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lịch học"
+            />
+        <Button
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/btnScheduleExam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lịch thi"
+            />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexboxLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="10dp"
+        app:alignItems="center"
+        app:justifyContent="space_between"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggleButtonLayout">
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thời gian"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Môn học"
+                android:textStyle="bold" />
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.TonalButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7 ngày tới"
+            app:icon="@drawable/ic_filter"
+            app:iconGravity="end"
+            app:iconPadding="8dp" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/scheduleViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flexboxLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

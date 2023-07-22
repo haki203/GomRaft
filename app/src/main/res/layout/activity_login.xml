@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/edtMail"
         android:layout_width="238dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -47,6 +47,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="238dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Password"
+        android:layout_marginTop="10dp"
+        android:textStyle="normal"
+        android:textFontWeight="400"
+        android:textSize="14dp"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtMail" />
 
     <TextView
         android:id="@+id/textView2"
@@ -62,7 +79,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnLogin"
         app:layout_constraintHorizontal_bias="0.655"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -73,13 +90,14 @@
         android:textColor="#000000"
         android:textFontWeight="400"
         android:textStyle="normal"
+        android:onClick="onLoginClick"
         android:gravity="center"
         android:layout_marginEnd="100dp"
         android:text="Continue"
         android:textAllCaps="false"
         android:background="@drawable/custom_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
     <Button
         android:id="@+id/btnDk"

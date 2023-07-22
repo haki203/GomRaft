@@ -1,13 +1,13 @@
 package com.example.gomraft.dto;
 
-public class RegisterResponeDTO {
+public class RegisterResponseDTO {
     private boolean status;
     private String message;
 
-    public RegisterResponeDTO() {
+    public RegisterResponseDTO() {
     }
 
-    public RegisterResponeDTO(boolean status, String message) {
+    public RegisterResponseDTO(boolean status, String message) {
         this.status = status;
         this.message = message;
     }
