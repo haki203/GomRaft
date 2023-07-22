@@ -5,8 +5,14 @@
         android:icon="@drawable/vector_home"/>
     <item android:id="@+id/note" android:title="Lịch học"
         android:icon="@drawable/vector_notes"/>
-    <item android:id="@+id/coment" android:title="Comments"
-        android:icon="@drawable/vector_comment"/>
+    <item android:id="@+id/coment" android:title="Notification"
+        android:icon="@drawable/vector_thongbao"/>
     <item android:id="@+id/user" android:title="Tiện ích"
         android:icon="@drawable/vector_user"/>
+<!--    <item android:id="@+id/ht" android:title="Học tập"-->
+<!--        android:icon="@drawable/ht"/>-->
+<!--    <item android:id="@+id/hd" android:title="Hoạt động"-->
+<!--        android:icon="@drawable/hd"/>-->
+<!--    <item android:id="@+id/hp" android:title="Học phí"-->
+<!--        android:icon="@drawable/hp"/>-->
 </menu>
