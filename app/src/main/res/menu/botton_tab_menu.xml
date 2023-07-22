@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item android:id="@+id/ht" android:title="Học tập"
+            android:icon="@drawable/ht"/>
+        <item android:id="@+id/hd" android:title="Hoạt động"
+            android:icon="@drawable/hd"/>
+        <item android:id="@+id/hp" android:title="Học phí"
+            android:icon="@drawable/hp"/>
+</menu>
