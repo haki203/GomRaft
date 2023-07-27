@@ -8,9 +8,10 @@
         android:icon="@drawable/vector_comment"/>
     <item android:id="@+id/tienich" android:title="Tiện ích"
         android:icon="@drawable/vector_comment"/>
-    <item android:id="@+id/coment" android:title="Notification"
+    <item android:id="@+id/Notification" android:title="Notification"
         android:icon="@drawable/vector_thongbao"/>
-    <item android:id="@+id/user" android:title="Profile"
+    <item android:id="@+id/Profile" android:title="Profile"
         android:icon="@drawable/vector_user"/>
+
 
 </menu>
