@@ -49,10 +49,10 @@ public class HomeActivity extends AppCompatActivity {
                         bottomNavigationView.setSelectedItemId(R.id.note);
                         break;
                     case 2:
-                        bottomNavigationView.setSelectedItemId(R.id.comment);
+                        bottomNavigationView.setSelectedItemId(R.id.coment);
                         break;
                     case 3:
-                        bottomNavigationView.setSelectedItemId(R.id.Profile);
+                        bottomNavigationView.setSelectedItemId(R.id.user);
                         break;
                 }
                 super.onPageSelected(position);
@@ -68,10 +68,10 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.note:
                         pager.setCurrentItem(1);
                         break;
-                    case R.id.comment:
+                    case R.id.coment:
                         pager.setCurrentItem(2);
                         break;
-                    case R.id.Profile:
+                    case R.id.user:
                         pager.setCurrentItem(3);
                         break;
                 }
