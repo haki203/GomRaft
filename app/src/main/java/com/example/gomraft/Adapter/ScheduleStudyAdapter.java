@@ -1,25 +1,33 @@
 package com.example.gomraft.Adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gomraft.Dto.ListScheduleSubjectResponseDTO;
 import com.example.gomraft.R;
-import com.example.gomraft.models.Subject;
+import com.example.gomraft.Model.Subject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
 public class ScheduleStudyAdapter extends RecyclerView.Adapter<ScheduleStudyAdapter.ScheduleStudyViewHolder> {
-    List<Subject> subjectList;
+    List<ListScheduleSubjectResponseDTO.SubjectResponseDTO> subjectList;
     private Context context;
-    public void setData(List<Subject> subjectList){
+    public void setData(List<ListScheduleSubjectResponseDTO.SubjectResponseDTO> subjectList){
         this.subjectList= subjectList;
         notifyDataSetChanged();
     }
@@ -33,23 +41,51 @@ public class ScheduleStudyAdapter extends RecyclerView.Adapter<ScheduleStudyAdap
 
     @Override
     public void onBindViewHolder(@NonNull ScheduleStudyViewHolder holder, int position) {
-        Subject subject = subjectList.get(position);
-        if(position == 0) {
+        ListScheduleSubjectResponseDTO.SubjectResponseDTO subject = subjectList.get(position);
+        if(subject.getId() == subjectList.get(0).getId()) {
             holder.linearLayoutCompat.setBackgroundResource(R.drawable.bg_schedule_item_selected);
             int textColor = context.getResources().getColor(R.color.white);
             holder.txtName.setTextColor(textColor);
             holder.txtTime.setTextColor(textColor);
             holder.txtRoom.setTextColor(textColor);
+            holder.txtTime.setTypeface(null, Typeface.BOLD);
+            holder.txtName.setTypeface(null, Typeface.BOLD);
+            holder.txtTeacherName.setTypeface(null, Typeface.BOLD);
+            holder.txtRoom.setTypeface(null, Typeface.BOLD);
+            holder.txtTeacherName.setTextColor(textColor);
+            holder.imgRoom.setColorFilter(textColor);
+            holder.imgClock.setColorFilter(textColor);
+        }else{
+            holder.linearLayoutCompat.setBackgroundResource(R.drawable.bg_schedule_item);
+            int textColor = context.getResources().getColor(R.color.black);
+            holder.txtName.setTextColor(textColor);
+            holder.txtTime.setTextColor(textColor);
+            holder.txtRoom.setTextColor(textColor);
+            holder.txtTime.setTypeface(null, Typeface.NORMAL);
+            holder.txtName.setTypeface(null, Typeface.BOLD);
+            holder.txtTeacherName.setTypeface(null, Typeface.NORMAL);
+            holder.txtRoom.setTypeface(null, Typeface.NORMAL);
             holder.txtTeacherName.setTextColor(textColor);
             holder.imgRoom.setColorFilter(textColor);
             holder.imgClock.setColorFilter(textColor);
         }
-        holder.txtDay.setText(subject.getDay());
-        holder.txtShift.setText(subject.getShift());
-        holder.txtName.setText(subject.getName());
+        SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        SimpleDateFormat outputDateFormat = new SimpleDateFormat("dd/MM",Locale.getDefault());
+        String outputDate = subject.getDay();
+        try {
+            Date date = inputDateFormat.parse(subject.getDay());
+            if (date != null) {
+                outputDate = outputDateFormat.format(date);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        holder.txtDay.setText(outputDate);
+        holder.txtShift.setText(subject.getTime());
+        holder.txtName.setText(subject.getCourse_name());
         holder.txtTime.setText(subject.getTime());
         holder.txtRoom.setText(subject.getRoom());
-        holder.txtTeacherName.setText(subject.getTeacherName());
+        holder.txtTeacherName.setText(subject.getTeacher_name());
     }
 
     @Override

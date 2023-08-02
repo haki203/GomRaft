@@ -55,15 +55,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_three_dots"
-                app:tint="@color/black" />
-
-            <ImageView
                 android:id="@+id/ic_clock"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
