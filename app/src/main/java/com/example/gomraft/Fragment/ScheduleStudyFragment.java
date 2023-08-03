@@ -19,10 +19,8 @@ import com.example.gomraft.Dto.ListScheduleSubjectResponseDTO;
 import com.example.gomraft.Helpers.IRetrofit;
 import com.example.gomraft.Helpers.RetrofitHelper;
 import com.example.gomraft.R;
-import com.example.gomraft.Model.Subject;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -31,8 +29,9 @@ import retrofit2.Response;
 
 public class ScheduleStudyFragment extends Fragment {
     private static final String ARG_DATA = "data";
-    int date = 0;
-    int asc = 1;
+    int DATE = 0;
+    int ASC = 1;
+    int USER_ID = 1;
     private RecyclerView rcvSchedule;
     private CircularProgressIndicator mProgressIndicator;
     private IRetrofit iRetrofit;
@@ -55,28 +54,28 @@ public class ScheduleStudyFragment extends Fragment {
             String data = args.getString(ARG_DATA);
             switch (data) {
                 case "7 ngày tới":
-                    date = 7;
-                    asc = 1;
+                    DATE = 7;
+                    ASC = 1;
                     break;
                 case "14 ngày tới":
-                    date = 14;
-                    asc = 1;
+                    DATE = 14;
+                    ASC = 1;
                     break;
                 case "30 ngày tới":
-                    date = 30;
-                    asc = 1;
+                    DATE = 30;
+                    ASC = 1;
                     break;
                 case "7 ngày trước":
-                    date = 7;
-                    asc = -1;
+                    DATE = 7;
+                    ASC = -1;
                     break;
                 case "14 ngày trước":
-                    date = 14;
-                    asc = -1;
+                    DATE = 14;
+                    ASC = -1;
                     break;
                 case "30 ngày trước":
-                    date = 30;
-                    asc = -1;
+                    DATE = 30;
+                    ASC = -1;
                     break;
             }
         }
@@ -135,7 +134,7 @@ public class ScheduleStudyFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        iRetrofit.getSchedule(date, asc, 0).enqueue(responseDTOCallback);
+        iRetrofit.getSchedule(DATE, ASC, 0, USER_ID).enqueue(responseDTOCallback);
     }
 
 }
