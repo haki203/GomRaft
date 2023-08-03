@@ -20,6 +20,7 @@ import com.example.gomraft.Helpers.IRetrofit;
 import com.example.gomraft.Helpers.RetrofitHelper;
 import com.example.gomraft.R;
 import com.example.gomraft.Model.Subject;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ScheduleExamFragment extends Fragment {
+    private static final String ARG_DATA = "data";
+    int date = 0;
+    int asc = 1;
+    private CircularProgressIndicator mProgressIndicator;
     private IRetrofit iRetrofit;
     private RecyclerView rcvSchedule;
     private List<ListScheduleSubjectResponseDTO.SubjectResponseDTO> subjectResponseDTOList;
@@ -36,11 +41,48 @@ public class ScheduleExamFragment extends Fragment {
     public ScheduleExamFragment() {
         // Required empty public constructor
     }
+    public static ScheduleExamFragment newInstance(String data) {
+        ScheduleExamFragment fragment = new ScheduleExamFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_DATA, data);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle args = getArguments();
+        if (args != null) {
+            String data = args.getString(ARG_DATA);
+            switch (data) {
+                case "7 ngày tới":
+                    date = 7;
+                    asc = 1;
+                    break;
+                case "14 ngày tới":
+                    date = 14;
+                    asc = 1;
+                    break;
+                case "30 ngày tới":
+                    date = 30;
+                    asc = 1;
+                    break;
+                case "7 ngày trước":
+                    date = 7;
+                    asc = -1;
+                    break;
+                case "14 ngày trước":
+                    date = 14;
+                    asc = -1;
+                    break;
+                case "30 ngày trước":
+                    date = 30;
+                    asc = -1;
+                    break;
+            }
+        }
     }
 
     @Override
@@ -53,6 +95,7 @@ public class ScheduleExamFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mProgressIndicator = view.findViewById(R.id.progress_circular);
         rcvSchedule = view.findViewById(R.id.rcvScheduleExam);
         iRetrofit = RetrofitHelper.createService(IRetrofit.class);
 
@@ -63,6 +106,7 @@ public class ScheduleExamFragment extends Fragment {
         scheduleStudyAdapter = new ScheduleStudyAdapter();
 //        scheduleStudyAdapter.setData(getListScheduleSubject());
         rcvSchedule.setAdapter(scheduleStudyAdapter);
+        mProgressIndicator.setVisibility(View.VISIBLE);
     }
 
     Callback<ListScheduleSubjectResponseDTO> responseDTOCallback = new Callback<ListScheduleSubjectResponseDTO>() {
@@ -74,6 +118,7 @@ public class ScheduleExamFragment extends Fragment {
                     if (listScheduleSubjectResponseDTO.isStatus()) {
                         subjectResponseDTOList = listScheduleSubjectResponseDTO.getSubjectResponseDTOList();
                         scheduleStudyAdapter.setData(subjectResponseDTOList);
+                        mProgressIndicator.setVisibility(View.GONE);
                     } else {
                         Toast.makeText(getContext(),
                                 "onResponse Không thành công",
@@ -96,6 +141,6 @@ public class ScheduleExamFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        iRetrofit.getSchedule(7, -1).enqueue(responseDTOCallback);
+        iRetrofit.getSchedule(date, asc, 1).enqueue(responseDTOCallback);
     }
 }
