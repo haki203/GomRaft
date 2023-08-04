@@ -8,21 +8,18 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.gomraft.Fragment.ScheduleExamFragment;
 import com.example.gomraft.Fragment.ScheduleStudyFragment;
 
-import java.util.List;
-// adapter view pager lịch hoc -thi
 public class ScheduleAdapter extends FragmentStateAdapter {
 
-    String filteredList;
-    public ScheduleAdapter(@NonNull Fragment fragment, String filteredList) {
+
+    public ScheduleAdapter(@NonNull Fragment fragment) {
         super(fragment);
-        this.filteredList = filteredList;
     }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        if(position == 0 ) return  ScheduleStudyFragment.newInstance(filteredList);
-        else return ScheduleExamFragment.newInstance(filteredList);
+        if(position == 0 ) return  new ScheduleStudyFragment();
+        else return new ScheduleExamFragment();
     }
 
     @Override

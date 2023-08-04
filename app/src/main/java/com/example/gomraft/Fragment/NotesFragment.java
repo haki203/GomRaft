@@ -11,16 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.gomraft.Adapter.ScheduleAdapter;
 import com.example.gomraft.R;
-import com.google.android.material.button.MaterialButtonToggleGroup;
-import com.google.android.material.chip.Chip;
-import com.google.android.material.chip.ChipGroup;
 
-import java.util.List;
-
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link NotesFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 public class NotesFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -44,12 +43,9 @@ public class NotesFragment extends Fragment {
         return fragment;
     }
 
-    private ChipGroup chipGroup;
-    String filteredList = "7 ngày tới";
+
     private ViewPager2 viewPager2;
     private Button btnStudy, btnExam;
-    private MaterialButtonToggleGroup materialButtonToggleGroup;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,9 +67,9 @@ public class NotesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewPager2 = view.findViewById(R.id.scheduleViewPager);
         btnExam = view.findViewById(R.id.btnScheduleExam);
-        materialButtonToggleGroup = view.findViewById(R.id.toggleButtonLayout);
         btnStudy = view.findViewById(R.id.btnScheduleStudy);
-        chipGroup = view.findViewById(R.id.chipGroup);
+        ScheduleAdapter scheduleAdapter = new ScheduleAdapter(this);
+        viewPager2.setAdapter(scheduleAdapter);
         btnStudy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,31 +83,5 @@ public class NotesFragment extends Fragment {
                 viewPager2.setCurrentItem(1, true);
             }
         });
-        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                if(position == 0) {
-                    materialButtonToggleGroup.check(R.id.btnScheduleStudy);
-                }else if (position == 1){
-                    materialButtonToggleGroup.check(R.id.btnScheduleExam);
-                }
-            }
-        });
-        chipGroup.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
-            @Override
-            public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
-                Chip chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
-                if (chip != null) {
-                    String label = chip.getText().toString();
-                    filteredList = label;
-                    ScheduleAdapter scheduleAdapter = new ScheduleAdapter(NotesFragment.this,label);
-                    viewPager2.setAdapter(scheduleAdapter);
-                }
-            }
-        });
-
-        ScheduleAdapter scheduleAdapter = new ScheduleAdapter(this, filteredList);
-        viewPager2.setAdapter(scheduleAdapter);
     }
 }

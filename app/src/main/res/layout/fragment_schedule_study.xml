@@ -3,17 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="24dp"
     android:layout_marginTop="10dp"
     tools:context=".Fragment.ScheduleStudyFragment">
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:layout_width="wrap_content"
-        android:id="@+id/progress_circular"
-        android:layout_height="wrap_content"
-        app:indicatorSize="24dp"
-        android:indeterminate="true"
-        android:layout_gravity="center" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvScheduleStudy"
         android:layout_width="match_parent"

@@ -24,16 +24,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-//adapter recycler view lịch hoc - thi
 public class ScheduleStudyAdapter extends RecyclerView.Adapter<ScheduleStudyAdapter.ScheduleStudyViewHolder> {
     List<ListScheduleSubjectResponseDTO.SubjectResponseDTO> subjectList;
     private Context context;
-
-    public void setData(List<ListScheduleSubjectResponseDTO.SubjectResponseDTO> subjectList) {
-        this.subjectList = subjectList;
+    public void setData(List<ListScheduleSubjectResponseDTO.SubjectResponseDTO> subjectList){
+        this.subjectList= subjectList;
         notifyDataSetChanged();
     }
-
     @NonNull
     @Override
     public ScheduleStudyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,7 +42,7 @@ public class ScheduleStudyAdapter extends RecyclerView.Adapter<ScheduleStudyAdap
     @Override
     public void onBindViewHolder(@NonNull ScheduleStudyViewHolder holder, int position) {
         ListScheduleSubjectResponseDTO.SubjectResponseDTO subject = subjectList.get(position);
-        if (subject.getId() == subjectList.get(0).getId()) {
+        if(subject.getId() == subjectList.get(0).getId()) {
             holder.linearLayoutCompat.setBackgroundResource(R.drawable.bg_schedule_item_selected);
             int textColor = context.getResources().getColor(R.color.white);
             holder.txtName.setTextColor(textColor);
@@ -58,8 +55,7 @@ public class ScheduleStudyAdapter extends RecyclerView.Adapter<ScheduleStudyAdap
             holder.txtTeacherName.setTextColor(textColor);
             holder.imgRoom.setColorFilter(textColor);
             holder.imgClock.setColorFilter(textColor);
-            holder.imgTeacher.setColorFilter(textColor);
-        } else {
+        }else{
             holder.linearLayoutCompat.setBackgroundResource(R.drawable.bg_schedule_item);
             int textColor = context.getResources().getColor(R.color.black);
             holder.txtName.setTextColor(textColor);
@@ -72,10 +68,9 @@ public class ScheduleStudyAdapter extends RecyclerView.Adapter<ScheduleStudyAdap
             holder.txtTeacherName.setTextColor(textColor);
             holder.imgRoom.setColorFilter(textColor);
             holder.imgClock.setColorFilter(textColor);
-            holder.imgTeacher.setColorFilter(textColor);
         }
         SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        SimpleDateFormat outputDateFormat = new SimpleDateFormat("dd/MM", Locale.getDefault());
+        SimpleDateFormat outputDateFormat = new SimpleDateFormat("dd/MM",Locale.getDefault());
         String outputDate = subject.getDay();
         try {
             Date date = inputDateFormat.parse(subject.getDay());
@@ -88,49 +83,26 @@ public class ScheduleStudyAdapter extends RecyclerView.Adapter<ScheduleStudyAdap
         holder.txtDay.setText(outputDate);
         holder.txtShift.setText(subject.getTime());
         holder.txtName.setText(subject.getCourse_name());
+        holder.txtTime.setText(subject.getTime());
         holder.txtRoom.setText(subject.getRoom());
         holder.txtTeacherName.setText(subject.getTeacher_name());
-        String time = convertShiftToTime(subject.getTime());
-        holder.txtTime.setText(time);
-
-    }
-
-    private String convertShiftToTime(String time) {
-        switch (time) {
-            case "Ca 1":
-                return "07:30 - 9:30";
-            case "Ca 2":
-                return "09:45 - 11:45";
-            case "Ca 3":
-                return "13:00 - 15:00";
-            case "Ca 4":
-                return "15:15 - 17:15";
-            case "Ca 5":
-                return "17:30 - 19:30";
-            case "Ca 6":
-                return "19:45 - 21:45";
-            default:
-                return time;
-        }
     }
 
     @Override
     public int getItemCount() {
-        if (subjectList == null) return 0;
+        if(subjectList == null) return 0;
         else return subjectList.size();
     }
 
     public static class ScheduleStudyViewHolder extends RecyclerView.ViewHolder {
         public TextView txtDay, txtShift, txtName, txtTime, txtRoom, txtTeacherName;
         public LinearLayoutCompat linearLayoutCompat;
-        public ImageView imgClock, imgRoom,imgTeacher;
-
+        public ImageView imgClock, imgRoom;
         public ScheduleStudyViewHolder(@NonNull View itemView) {
             super(itemView);
             linearLayoutCompat = itemView.findViewById(R.id.layoutItemSchedule);
             imgClock = itemView.findViewById(R.id.ic_clock);
             imgRoom = itemView.findViewById(R.id.ic_room);
-            imgTeacher = itemView.findViewById(R.id.imgTeacher);
             txtDay = itemView.findViewById(R.id.txtDay);
             txtShift = itemView.findViewById(R.id.txtCaHoc);
             txtName = itemView.findViewById(R.id.txtMonHoc);
