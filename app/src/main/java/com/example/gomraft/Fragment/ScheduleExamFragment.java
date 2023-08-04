@@ -31,9 +31,8 @@ import retrofit2.Response;
 
 public class ScheduleExamFragment extends Fragment {
     private static final String ARG_DATA = "data";
-    int DATE = 0;
-    int ASC = 1;
-    int USER_ID = 1;
+    int date = 0;
+    int asc = 1;
     private CircularProgressIndicator mProgressIndicator;
     private IRetrofit iRetrofit;
     private RecyclerView rcvSchedule;
@@ -59,28 +58,28 @@ public class ScheduleExamFragment extends Fragment {
             String data = args.getString(ARG_DATA);
             switch (data) {
                 case "7 ngày tới":
-                    DATE = 7;
-                    ASC = 1;
+                    date = 7;
+                    asc = 1;
                     break;
                 case "14 ngày tới":
-                    DATE = 14;
-                    ASC = 1;
+                    date = 14;
+                    asc = 1;
                     break;
                 case "30 ngày tới":
-                    DATE = 30;
-                    ASC = 1;
+                    date = 30;
+                    asc = 1;
                     break;
                 case "7 ngày trước":
-                    DATE = 7;
-                    ASC = -1;
+                    date = 7;
+                    asc = -1;
                     break;
                 case "14 ngày trước":
-                    DATE = 14;
-                    ASC = -1;
+                    date = 14;
+                    asc = -1;
                     break;
                 case "30 ngày trước":
-                    DATE = 30;
-                    ASC = -1;
+                    date = 30;
+                    asc = -1;
                     break;
             }
         }
@@ -142,6 +141,6 @@ public class ScheduleExamFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        iRetrofit.getSchedule(DATE, ASC, 1, USER_ID).enqueue(responseDTOCallback);
+        iRetrofit.getSchedule(date, asc, 1).enqueue(responseDTOCallback);
     }
 }
