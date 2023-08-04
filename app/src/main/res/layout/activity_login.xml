@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/nen1"
+    android:background="@drawable/hinhnen"
     tools:context=".LoginActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,4 +60,31 @@
                     app:layout_constraintVertical_bias="0.289" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="128dp"
+            android:fontFamily="@font/interbold"
+            android:text="Welcome  to  MyFPL"
+            android:textColor="#ff7f00"
+            android:textFontWeight="600"
+            android:textSize="35dp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.056"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/ong1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
