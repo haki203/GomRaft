@@ -1,4 +1,4 @@
-package com.example.gomraft.Model;
+package com.example.gomraft.models;
 
 public class Subject {
     private String id;
