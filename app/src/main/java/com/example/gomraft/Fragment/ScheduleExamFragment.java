@@ -8,28 +8,82 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.gomraft.Adapter.ScheduleStudyAdapter;
+import com.example.gomraft.Dto.ListScheduleSubjectResponseDTO;
+import com.example.gomraft.Helpers.IRetrofit;
+import com.example.gomraft.Helpers.RetrofitHelper;
 import com.example.gomraft.R;
-import com.example.gomraft.models.Subject;
+import com.example.gomraft.Model.Subject;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScheduleExamFragment extends Fragment {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+public class ScheduleExamFragment extends Fragment {
+    private static final String ARG_DATA = "data";
+    int DATE = 0;
+    int ASC = 1;
+    int USER_ID = 1;
+    private CircularProgressIndicator mProgressIndicator;
+    private IRetrofit iRetrofit;
     private RecyclerView rcvSchedule;
+    private List<ListScheduleSubjectResponseDTO.SubjectResponseDTO> subjectResponseDTOList;
+    ScheduleStudyAdapter scheduleStudyAdapter;
     public ScheduleExamFragment() {
         // Required empty public constructor
+    }
+    public static ScheduleExamFragment newInstance(String data) {
+        ScheduleExamFragment fragment = new ScheduleExamFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_DATA, data);
+        fragment.setArguments(args);
+        return fragment;
     }
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle args = getArguments();
+        if (args != null) {
+            String data = args.getString(ARG_DATA);
+            switch (data) {
+                case "7 ngày tới":
+                    DATE = 7;
+                    ASC = 1;
+                    break;
+                case "14 ngày tới":
+                    DATE = 14;
+                    ASC = 1;
+                    break;
+                case "30 ngày tới":
+                    DATE = 30;
+                    ASC = 1;
+                    break;
+                case "7 ngày trước":
+                    DATE = 7;
+                    ASC = -1;
+                    break;
+                case "14 ngày trước":
+                    DATE = 14;
+                    ASC = -1;
+                    break;
+                case "30 ngày trước":
+                    DATE = 30;
+                    ASC = -1;
+                    break;
+            }
+        }
     }
 
     @Override
@@ -42,84 +96,52 @@ public class ScheduleExamFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mProgressIndicator = view.findViewById(R.id.progress_circular);
         rcvSchedule = view.findViewById(R.id.rcvScheduleExam);
+        iRetrofit = RetrofitHelper.createService(IRetrofit.class);
 
         //gan adapter vo recyclerview
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         rcvSchedule.setLayoutManager(linearLayoutManager);
 
-        ScheduleStudyAdapter scheduleStudyAdapter = new ScheduleStudyAdapter();
-        scheduleStudyAdapter.setData(getListScheduleSubject());
+        scheduleStudyAdapter = new ScheduleStudyAdapter();
+//        scheduleStudyAdapter.setData(getListScheduleSubject());
         rcvSchedule.setAdapter(scheduleStudyAdapter);
+        mProgressIndicator.setVisibility(View.VISIBLE);
     }
 
-    private List<Subject> getListScheduleSubject() {
-        List<Subject> subjects = new ArrayList<>();
-        subjects.add(new Subject("1",
-                "Bao ve Lap trinh mobile 1",
-                "17:00 : 19:00",
-                "T308",
-                "chann3",
-                "teacher image",
-                "22/05",
-                "Ca 5"));
-        subjects.add(new Subject("2",
-                "Lap trinh mobile 2",
-                "17:00 : 19:00",
-                "T308",
-                "chann3",
-                "teacher image",
-                "22/05",
-                "Ca 5"));
-        subjects.add(new Subject("3",
-                "Lap trinh mobile 3",
-                "17:00 : 19:00",
-                "T308",
-                "chann3",
-                "teacher image",
-                "22/05",
-                "Ca 5"));
-        subjects.add(new Subject("4",
-                "Lap trinh mobile 4",
-                "17:00 : 19:00",
-                "T308",
-                "chann3",
-                "teacher image",
-                "22/05",
-                "Ca 5"));
-        subjects.add(new Subject("5",
-                "Lap trinh mobile 5",
-                "17:00 : 19:00",
-                "T308",
-                "chann3",
-                "teacher image",
-                "22/05",
-                "Ca 5"));
-        subjects.add(new Subject("6",
-                "Lap trinh mobile 6",
-                "17:00 : 19:00",
-                "T308",
-                "chann3",
-                "teacher image",
-                "22/05",
-                "Ca 5"));
-        subjects.add(new Subject("7",
-                "Lap trinh mobile 7",
-                "17:00 : 19:00",
-                "T308",
-                "chann3",
-                "teacher image",
-                "22/05",
-                "Ca 5"));
-        subjects.add(new Subject("7",
-                "Lap trinh mobile 7",
-                "17:00 : 19:00",
-                "T308",
-                "chann3",
-                "teacher image",
-                "22/05",
-                "Ca 5"));
+    Callback<ListScheduleSubjectResponseDTO> responseDTOCallback = new Callback<ListScheduleSubjectResponseDTO>() {
+        @Override
+        public void onResponse(Call<ListScheduleSubjectResponseDTO> call, Response<ListScheduleSubjectResponseDTO> response) {
+            if (response.isSuccessful()) {
+                ListScheduleSubjectResponseDTO listScheduleSubjectResponseDTO = response.body();
+                if (listScheduleSubjectResponseDTO != null) {
+                    if (listScheduleSubjectResponseDTO.isStatus()) {
+                        subjectResponseDTOList = listScheduleSubjectResponseDTO.getSubjectResponseDTOList();
+                        scheduleStudyAdapter.setData(subjectResponseDTOList);
+                        mProgressIndicator.setVisibility(View.GONE);
+                    } else {
+                        Toast.makeText(getContext(),
+                                "onResponse Không thành công",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(),
+                            "onResponse Không thành công",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
 
-        return subjects;
+        @Override
+        public void onFailure(Call<ListScheduleSubjectResponseDTO> call, Throwable t) {
+            Log.e(ScheduleExamFragment.class.getSimpleName(), "onFailure: " + t.getMessage());
+        }
+    };
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        iRetrofit.getSchedule(DATE, ASC, 1, USER_ID).enqueue(responseDTOCallback);
     }
 }
