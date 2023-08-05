@@ -47,22 +47,22 @@
                     android:layout_width="350dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="5dp"
+                    android:background="@drawable/custom_button_gg"
+                    android:drawableLeft="@drawable/gg"
+                    android:fontFamily="@font/intersemibold"
                     android:paddingLeft="20dp"
                     android:paddingRight="60dp"
-                    android:background="@drawable/custom_button_gg"
-                    android:fontFamily="@font/intersemibold"
                     android:text="Đăng nhập với Google"
-                    android:textAllCaps="false"
-                    android:drawableLeft="@drawable/gg"
                     android:textColor="#FFFFFF"
                     android:textFontWeight="600"
                     android:textSize="18dp"
                     android:textStyle="normal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.466"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-                    app:layout_constraintVertical_bias="0.289" />
+                    app:layout_constraintVertical_bias="0.333" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
