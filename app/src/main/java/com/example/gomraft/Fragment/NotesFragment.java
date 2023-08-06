@@ -103,6 +103,7 @@ public class NotesFragment extends Fragment {
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
                 Chip chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
                 if (chip != null) {
+                    Toast.makeText(requireContext(), chip.getText().toString(), Toast.LENGTH_SHORT).show();
                     String label = chip.getText().toString();
                     filteredList = label;
                     ScheduleAdapter scheduleAdapter = new ScheduleAdapter(NotesFragment.this,label);
