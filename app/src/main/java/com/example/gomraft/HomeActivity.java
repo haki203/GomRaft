@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
 
         AdapterViewPager adapterViewPager = new AdapterViewPager(this, fragmentArrayList);
         pager.setAdapter(adapterViewPager);
-//g
+
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {

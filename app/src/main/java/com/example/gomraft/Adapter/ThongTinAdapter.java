@@ -10,17 +10,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.gomraft.Model.ThongTin;
 import com.example.gomraft.R;
+import com.example.gomraft.dto.ListPostsReponseDTO;
 
 import java.util.List;
 
 public class ThongTinAdapter extends RecyclerView.Adapter<ThongTinAdapter.ThongTinViewHolder>{
 
-    private List<ThongTin> mTT;
+    private List<ListPostsReponseDTO.PostsReponseDTO> posts;
 
-    public ThongTinAdapter(List<ThongTin> mList) {
-        this.mTT = mList;
+    public ThongTinAdapter(List<ListPostsReponseDTO.PostsReponseDTO> posts) {
+        this.posts = posts;
     }
 
     @NonNull
@@ -32,23 +34,25 @@ public class ThongTinAdapter extends RecyclerView.Adapter<ThongTinAdapter.ThongT
 
     @Override
     public void onBindViewHolder(@NonNull ThongTinViewHolder holder, int position) {
-        ThongTin thongTin = mTT.get(position);
-        if (thongTin == null){
+        ListPostsReponseDTO.PostsReponseDTO post = posts.get(position);
+        if (post == null){
             return;
         }
-        holder.imageView.setImageResource(thongTin.getResourceId());
-        holder.textView.setText(thongTin.getName());
-        holder.tv_content.setText(thongTin.getContent());
-        holder.tv_mota.setText(thongTin.getMota());
-
+        holder.textView.setText(post.getTitle());
+        holder.tv_content.setText(post.getContent());
+        holder.tv_mota.setText(post.getCreated_at());
+        Glide
+                .with(holder.itemView.getContext());
     }
 
     @Override
     public int getItemCount() {
-        if (mTT != null){
-            return mTT.size();
+        if (posts != null){
+            return posts.size();
+        }else {
+            return 0;
         }
-        return 0;
+
     }
 
     public class ThongTinViewHolder extends RecyclerView.ViewHolder{
