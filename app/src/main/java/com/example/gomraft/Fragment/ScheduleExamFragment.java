@@ -104,7 +104,12 @@ public class ScheduleExamFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         rcvSchedule.setLayoutManager(linearLayoutManager);
 
-        scheduleStudyAdapter = new ScheduleStudyAdapter();
+        scheduleStudyAdapter = new ScheduleStudyAdapter(new ScheduleStudyAdapter.IOnItemClickListener() {
+            @Override
+            public void onClick(int id) {
+                Toast.makeText(getContext(), id+"", Toast.LENGTH_SHORT).show();
+            }
+        });
 //        scheduleStudyAdapter.setData(getListScheduleSubject());
         rcvSchedule.setAdapter(scheduleStudyAdapter);
         mProgressIndicator.setVisibility(View.VISIBLE);

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,7 @@ import com.example.gomraft.Dto.ListScheduleSubjectResponseDTO;
 import com.example.gomraft.Helpers.IRetrofit;
 import com.example.gomraft.Helpers.RetrofitHelper;
 import com.example.gomraft.R;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import java.util.List;
@@ -37,7 +39,8 @@ public class ScheduleStudyFragment extends Fragment {
     private IRetrofit iRetrofit;
     ScheduleStudyAdapter scheduleStudyAdapter;
     private List<ListScheduleSubjectResponseDTO.SubjectResponseDTO> subjectResponseDTOList;
-
+    private ConstraintLayout layoutBottomSheet;
+    private BottomSheetBehavior bottomSheetBehavior;
     public static ScheduleStudyFragment newInstance(String data) {
         ScheduleStudyFragment fragment = new ScheduleStudyFragment();
         Bundle args = new Bundle();
@@ -94,10 +97,23 @@ public class ScheduleStudyFragment extends Fragment {
         rcvSchedule = view.findViewById(R.id.rcvScheduleStudy);
         mProgressIndicator = view.findViewById(R.id.progress_circular);
         iRetrofit = RetrofitHelper.createService(IRetrofit.class);
+        layoutBottomSheet = view.findViewById(R.id.detail_schedule);
+        bottomSheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
         //gan adapter vo recyclerview
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         rcvSchedule.setLayoutManager(linearLayoutManager);
-        scheduleStudyAdapter = new ScheduleStudyAdapter();
+        scheduleStudyAdapter = new ScheduleStudyAdapter(new ScheduleStudyAdapter.IOnItemClickListener() {
+            @Override
+            public void onClick(int id) {
+//                if(bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED){
+//                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+//                }else{
+//                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//                }
+                BottomSheetDetailScheduleFragment fragment =  new BottomSheetDetailScheduleFragment();
+                fragment.show(getChildFragmentManager(), "BottomSheetDetailScheduleFragment");
+            }
+        });
         rcvSchedule.setAdapter(scheduleStudyAdapter);
         mProgressIndicator.setVisibility(View.VISIBLE);
     }

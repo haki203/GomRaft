@@ -28,6 +28,11 @@ import java.util.Objects;
 public class ScheduleStudyAdapter extends RecyclerView.Adapter<ScheduleStudyAdapter.ScheduleStudyViewHolder> {
     List<ListScheduleSubjectResponseDTO.SubjectResponseDTO> subjectList;
     private Context context;
+    IOnItemClickListener onItemClickListener;
+
+    public ScheduleStudyAdapter(IOnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
     public void setData(List<ListScheduleSubjectResponseDTO.SubjectResponseDTO> subjectList) {
         this.subjectList = subjectList;
@@ -92,7 +97,12 @@ public class ScheduleStudyAdapter extends RecyclerView.Adapter<ScheduleStudyAdap
         holder.txtTeacherName.setText(subject.getTeacher_name());
         String time = convertShiftToTime(subject.getTime());
         holder.txtTime.setText(time);
-
+        holder.linearLayoutCompat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.onClick(subject.getId());
+            }
+        });
     }
 
     private String convertShiftToTime(String time) {
@@ -138,5 +148,9 @@ public class ScheduleStudyAdapter extends RecyclerView.Adapter<ScheduleStudyAdap
             txtRoom = itemView.findViewById(R.id.txtLocation);
             txtTeacherName = itemView.findViewById(R.id.txtTeacher);
         }
+    }
+
+    public  interface IOnItemClickListener {
+        void onClick(int id);
     }
 }
