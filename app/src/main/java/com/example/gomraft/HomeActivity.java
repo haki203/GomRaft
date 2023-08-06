@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 
+import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -26,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
     BottomNavigationView bottomNavigationView;
     User user;
+    @SuppressLint("UseCompatLoadingForColorStateLists")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
          user = getIntent().getParcelableExtra("user");
         AdapterViewPager adapterViewPager = new AdapterViewPager(this, fragmentArrayList);
         pager.setAdapter(adapterViewPager);
-//g
+        pager.setUserInputEnabled(false);
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -81,6 +84,7 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
-
+        bottomNavigationView.setItemActiveIndicatorColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
+        bottomNavigationView.setItemTextColor(getResources().getColorStateList(R.color.purple_500));
     }
 }
