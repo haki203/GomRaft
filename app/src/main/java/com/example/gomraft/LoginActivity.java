@@ -180,6 +180,7 @@ import retrofit2.Response;
             public void onClick(View v) {
                 // Xử lý khi người dùng chọn tùy chọn FPT Polytechnic Hồ Chí Minh
                 resultCS = "FPT Polytechnic Hồ Chí Minh";
+                btnCs.setText(resultCS);
                 customPopupWindow.dismiss(); // Đóng custom PopupMenu
             }
         });
@@ -189,6 +190,7 @@ import retrofit2.Response;
             public void onClick(View v) {
                 // Xử lý khi người dùng chọn tùy chọn FPT Polytechnic Hà Nội
                 resultCS = "FPT Polytechnic Hà Nội";
+                btnCs.setText(resultCS);
                 customPopupWindow.dismiss(); // Đóng custom PopupMenu
             }
         });
@@ -197,6 +199,7 @@ import retrofit2.Response;
             public void onClick(View v) {
                 // Xử lý khi người dùng chọn tùy chọn FPT Polytechnic Hà Nội
                 resultCS = "FPT Polytechnic Cần Thơ";
+                btnCs.setText(resultCS);
                 customPopupWindow.dismiss(); // Đóng custom PopupMenu
             }
         });
@@ -205,6 +208,7 @@ import retrofit2.Response;
             public void onClick(View v) {
                 // Xử lý khi người dùng chọn tùy chọn FPT Polytechnic Hà Nội
                 resultCS = "FPT Polytechnic Tây Nguyên";
+                btnCs.setText(resultCS);
                 customPopupWindow.dismiss(); // Đóng custom PopupMenu
             }
         });
