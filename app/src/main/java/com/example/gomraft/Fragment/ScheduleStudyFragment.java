@@ -102,15 +102,18 @@ public class ScheduleStudyFragment extends Fragment {
         //gan adapter vo recyclerview
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         rcvSchedule.setLayoutManager(linearLayoutManager);
+        // rcv item click
         scheduleStudyAdapter = new ScheduleStudyAdapter(new ScheduleStudyAdapter.IOnItemClickListener() {
             @Override
             public void onClick(int id) {
-//                if(bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED){
-//                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-//                }else{
-//                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//                }
-                BottomSheetDetailScheduleFragment fragment =  new BottomSheetDetailScheduleFragment();
+                ListScheduleSubjectResponseDTO.SubjectResponseDTO subject = null;
+                for ( ListScheduleSubjectResponseDTO.SubjectResponseDTO responseDTO: subjectResponseDTOList
+                     ) {
+                        if(responseDTO.getId() == id){
+                            subject = responseDTO;
+                        }
+                }
+                BottomSheetDetailScheduleFragment fragment =  new BottomSheetDetailScheduleFragment(subject);
                 fragment.show(getChildFragmentManager(), "BottomSheetDetailScheduleFragment");
             }
         });
