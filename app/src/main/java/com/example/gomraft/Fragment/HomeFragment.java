@@ -48,14 +48,11 @@ public class HomeFragment extends Fragment {
 
     private List<ThongTin> getListThongTin() {
         List<ThongTin> list =new ArrayList<>();
-
         list.add(new ThongTin(R.drawable.ong1, "Người đăng: ThoRac", "Thông báo trốn nợ đi bụi không chịu về", "Thời gian: 23/7/2023"));
         list.add(new ThongTin(R.drawable.ong1, "Người đăng: BaoDog", "Sau khi ra trường không có việc làm nên đi Nghĩa vụ quân sự", "Thời gian: 23/7/2023 "));
         list.add(new ThongTin(R.drawable.ong1, "Người đăng: BaoDog", "Sau khi ra trường không có việc làm nên đi Nghĩa vụ quân sự", "Thời gian: 23/7/2023 "));
         list.add(new ThongTin(R.drawable.ong1, "Người đăng: BaoDog", "Sau khi ra trường không có việc làm nên đi Nghĩa vụ quân sự", "Thời gian: 23/7/2023 "));
         list.add(new ThongTin(R.drawable.ong1, "Người đăng: BaoDog", "Sau khi ra trường không có việc làm nên đi Nghĩa vụ quân sự", "Thời gian: 23/7/2023 "));
-
-
         return list;
     }
 }

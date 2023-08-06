@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_fpt_hcm"
+        android:title="FPT Polytechnic Hồ Chí Minh" />
+    <item
+        android:id="@+id/menu_fpt_hanoi"
+        android:title="FPT Polytechnic Hà Nội" />
+    <item
+        android:id="@+id/menu_fpt_taynguyen"
+        android:title="FPT Polytechnic Tây Nguyên" />
+    <item
+        android:id="@+id/menu_fpt_cantho"
+        android:title="FPT Polytechnic Cần Thơ" />
+</menu>

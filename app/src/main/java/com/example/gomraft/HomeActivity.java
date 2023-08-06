@@ -14,6 +14,7 @@ import com.example.gomraft.Fragment.ComentsFragment;
 import com.example.gomraft.Fragment.HomeFragment;
 import com.example.gomraft.Fragment.NotesFragment;
 import com.example.gomraft.Fragment.ProifileFragment;
+import com.example.gomraft.Model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -24,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
     ViewPager2 pager;
     ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
     BottomNavigationView bottomNavigationView;
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,8 @@ public class HomeActivity extends AppCompatActivity {
         fragmentArrayList.add(new NotesFragment());
         fragmentArrayList.add(new ComentsFragment());
         fragmentArrayList.add(new ProifileFragment());
-
+// Nhận đối tượng User từ Intent
+         user = getIntent().getParcelableExtra("user");
         AdapterViewPager adapterViewPager = new AdapterViewPager(this, fragmentArrayList);
         pager.setAdapter(adapterViewPager);
 //g

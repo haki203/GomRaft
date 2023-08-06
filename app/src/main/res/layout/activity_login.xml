@@ -24,7 +24,7 @@
             app:layout_constraintVertical_bias="0.934">
 
                 <Button
-                    android:id="@+id/btnLogin"
+                    android:id="@+id/btnCs"
                     android:layout_width="350dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="16dp"
@@ -43,7 +43,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btnCs"
+                    android:id="@+id/btnLogin"
                     android:layout_width="350dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="5dp"
@@ -61,8 +61,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+                    app:layout_constraintTop_toBottomOf="@+id/btnCs"
                     app:layout_constraintVertical_bias="0.289" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
