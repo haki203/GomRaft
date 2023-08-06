@@ -107,7 +107,15 @@ public class ScheduleExamFragment extends Fragment {
         scheduleStudyAdapter = new ScheduleStudyAdapter(new ScheduleStudyAdapter.IOnItemClickListener() {
             @Override
             public void onClick(int id) {
-                Toast.makeText(getContext(), id+"", Toast.LENGTH_SHORT).show();
+                ListScheduleSubjectResponseDTO.SubjectResponseDTO subject = null;
+                for ( ListScheduleSubjectResponseDTO.SubjectResponseDTO responseDTO: subjectResponseDTOList
+                ) {
+                    if(responseDTO.getId() == id){
+                        subject = responseDTO;
+                    }
+                }
+                BottomSheetDetailScheduleFragment fragment =  new BottomSheetDetailScheduleFragment(subject);
+                fragment.show(getChildFragmentManager(), "BottomSheetDetailScheduleFragment");
             }
         });
 //        scheduleStudyAdapter.setData(getListScheduleSubject());
