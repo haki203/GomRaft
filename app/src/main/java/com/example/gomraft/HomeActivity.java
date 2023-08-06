@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
         fragmentArrayList.add(new ComentsFragment());
         fragmentArrayList.add(new ProifileFragment());
 // Nhận đối tượng User từ Intent
-         user = getIntent().getParcelableExtra("user");
+
         AdapterViewPager adapterViewPager = new AdapterViewPager(this, fragmentArrayList);
         pager.setAdapter(adapterViewPager);
         pager.setUserInputEnabled(false);
