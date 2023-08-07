@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -213,8 +214,33 @@ import retrofit2.Response;
             }
         });
 
-        // Hiển thị custom PopupMenu giữa màn hình
-        customPopupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+        // Hiển thị custom PopupMenu trên nút chọn cơ sở
+        int[] location = new int[2];
+        btnCs.getLocationOnScreen(location);
+        int x = location[0];
+        int y = location[1];
+// Lấy chiều rộng và chiều cao của màn hình
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        LoginActivity.this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int screenWidth = displayMetrics.widthPixels;
+        int screenHeight = displayMetrics.heightPixels;
+
+// Lấy chiều rộng và chiều cao của popup
+        customPopupWindow.setTouchable(true);
+        customPopupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
+        customPopupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+        customPopupWindow.getContentView().measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        int popupWidth = customPopupWindow.getContentView().getMeasuredWidth();
+        int popupHeight = customPopupWindow.getContentView().getMeasuredHeight();
+
+        // Tính toán vị trí X và Y để popup nằm giữa màn hình theo chiều ngang
+        int offsetX = (screenWidth - popupWidth) / 2;
+
+        // Điều chỉnh vị trí Y để cạnh dưới cùng của popup nằm phía trên cùng của nút btnCs
+        y = y - popupHeight;
+
+        // Hiển thị customPopupWindow tại vị trí tính toán được
+        customPopupWindow.showAtLocation(v, Gravity.NO_GRAVITY, offsetX, y);
     }
 }
 

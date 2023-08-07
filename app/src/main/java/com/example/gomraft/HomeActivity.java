@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.example.gomraft.Adapter.AdapterViewPager;
 import com.example.gomraft.Fragment.ComentsFragment;
+import com.example.gomraft.Fragment.FeedbackFragment;
 import com.example.gomraft.Fragment.HomeFragment;
 import com.example.gomraft.Fragment.NotesFragment;
 import com.example.gomraft.Fragment.ProifileFragment;
@@ -37,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         fragmentArrayList.add(new HomeFragment());
         fragmentArrayList.add(new NotesFragment());
-        fragmentArrayList.add(new ComentsFragment());
+        fragmentArrayList.add(new FeedbackFragment());
         fragmentArrayList.add(new ProifileFragment());
 // Nhận đối tượng User từ Intent
 
@@ -55,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
                         bottomNavigationView.setSelectedItemId(R.id.note);
                         break;
                     case 2:
-                        bottomNavigationView.setSelectedItemId(R.id.coment);
+                        bottomNavigationView.setSelectedItemId(R.id.feedback);
                         break;
                     case 3:
                         bottomNavigationView.setSelectedItemId(R.id.user);
@@ -74,7 +75,7 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.note:
                         pager.setCurrentItem(1);
                         break;
-                    case R.id.coment:
+                    case R.id.feedback:
                         pager.setCurrentItem(2);
                         break;
                     case R.id.user:

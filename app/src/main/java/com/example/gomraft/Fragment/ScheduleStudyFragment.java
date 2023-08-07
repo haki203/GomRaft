@@ -129,6 +129,7 @@ public class ScheduleStudyFragment extends Fragment {
                 if (listScheduleSubjectResponseDTO != null) {
                     if (listScheduleSubjectResponseDTO.isStatus()) {
                         subjectResponseDTOList = listScheduleSubjectResponseDTO.getSubjectResponseDTOList();
+                        Log.d(">>>>>>>>>","Day: "+subjectResponseDTOList.get(0).getDay());
                         scheduleStudyAdapter.setData(subjectResponseDTOList);
                         mProgressIndicator.setVisibility(View.GONE);
                     } else {
