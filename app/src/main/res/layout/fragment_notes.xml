@@ -66,6 +66,7 @@
             app:strokeColor='#EFEFF4'
             app:strokeWidth="1dp"
             app:singleSelection="true"
+            app:selectionRequired="true"
             app:checkedButton="@id/btnScheduleStudy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">

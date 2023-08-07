@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.gomraft.Adapter.ScheduleAdapter;
 import com.example.gomraft.R;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -49,6 +51,7 @@ public class NotesFragment extends Fragment {
     private ViewPager2 viewPager2;
     private Button btnStudy, btnExam;
     private MaterialButtonToggleGroup materialButtonToggleGroup;
+    private int buttonId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,20 +101,32 @@ public class NotesFragment extends Fragment {
                 }
             }
         });
+        ScheduleAdapter scheduleAdapter = new ScheduleAdapter(this, filteredList);
+        viewPager2.setAdapter(scheduleAdapter);
         chipGroup.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
+                viewPager2.unregisterOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        super.onPageSelected(position);
+                    }
+                });
                 Chip chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
+                int buttonId = materialButtonToggleGroup.getCheckedButtonId();
+                MaterialButton button = materialButtonToggleGroup.findViewById(buttonId);
                 if (chip != null) {
                     String label = chip.getText().toString();
                     filteredList = label;
                     ScheduleAdapter scheduleAdapter = new ScheduleAdapter(NotesFragment.this,label);
                     viewPager2.setAdapter(scheduleAdapter);
+                    if(button.getText().toString().equals("Lịch học")){
+                        viewPager2.setCurrentItem(0, true);
+                    }else viewPager2.setCurrentItem(1, true);
                 }
             }
         });
 
-        ScheduleAdapter scheduleAdapter = new ScheduleAdapter(this, filteredList);
-        viewPager2.setAdapter(scheduleAdapter);
+
     }
 }
