@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.example.gomraft.Adapter.ThongTinAdapter;
 import com.example.gomraft.HomeActivity;
@@ -42,8 +43,6 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,15 +70,7 @@ public class HomeFragment extends Fragment {
         public void onResponse(Call<ListPostsReponseDTO> call, Response<ListPostsReponseDTO> response) {
             if (response.isSuccessful()){
                 ListPostsReponseDTO reponseDTO = response.body();
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date date=null;
                 list=reponseDTO.getPosts();
-                try {
-                    date =format.parse(list.get(0).getCreated_at());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                list.get(0).setCreated_at(String.valueOf(date));
                 thongTinAdapter = new ThongTinAdapter(list);
                 rcv.setAdapter(thongTinAdapter);
             }
@@ -90,5 +81,6 @@ public class HomeFragment extends Fragment {
             Log.d(">>> login", "onFailure: " + t.getMessage());
         }
     };
+
 
 }

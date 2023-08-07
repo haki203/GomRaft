@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".DetailActivity"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/interextrabold"
+        android:text="Title"
+        android:textColor="#000000"
+        android:textFontWeight="900"
+        android:textSize="20dp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <ImageView
+        android:id="@+id/img_view"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"></ImageView>
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="350dp"
+        android:layout_height="170dp"
+        android:fontFamily="@font/interlight"
+        android:text="Content"
+        android:textColor="#000000"
+        android:textFontWeight="900"
+        android:textSize="18dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_view"></TextView>
+
+    <TextView
+        android:id="@+id/creat_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/intervariableffontslntwght"
+        android:text="Content"
+        android:textColor="#000000"
+        android:textFontWeight="900"
+        android:textSize="16dp"
+        android:textStyle="normal"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content"></TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>

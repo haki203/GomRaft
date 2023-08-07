@@ -2,14 +2,14 @@ package com.example.gomraft.dto;
 
 import java.util.List;
 
-public class ListPostsReponseDTO {
+public class DetailReponseDTO {
     private boolean status;
-    private List<PostsReponseDTO> posts;
+    private List<DetailReponseDTO.PostsReponseDTO> posts;
 
-    public ListPostsReponseDTO() {
+    public DetailReponseDTO() {
     }
 
-    public ListPostsReponseDTO(boolean status, List<PostsReponseDTO> posts) {
+    public DetailReponseDTO(boolean status, List<DetailReponseDTO.PostsReponseDTO> posts) {
         this.status = status;
         this.posts = posts;
     }
@@ -22,17 +22,16 @@ public class ListPostsReponseDTO {
         this.status = status;
     }
 
-    public List<PostsReponseDTO> getPosts() {
+    public List<DetailReponseDTO.PostsReponseDTO> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<PostsReponseDTO> posts) {
+    public void setPosts(List<DetailReponseDTO.PostsReponseDTO> posts) {
         this.posts = posts;
     }
 
     public class PostsReponseDTO {
         private int id;
-        private String image;
         private String title;
         private String content;
         private String  created_at;
@@ -40,20 +39,11 @@ public class ListPostsReponseDTO {
         public PostsReponseDTO() {
         }
 
-        public PostsReponseDTO(int id,String image, String title, String content, String created_at) {
+        public PostsReponseDTO(int id, String title, String content, String created_at) {
             this.id = id;
-            this.image = image;
             this.title = title;
             this.content = content;
             this.created_at = created_at;
-        }
-
-        public String getImage() {
-            return image;
-        }
-
-        public void setImage(String image) {
-            this.image = image;
         }
 
         public int getId() {

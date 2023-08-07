@@ -11,11 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:id="@+id/img_user"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ong1"
-            ></ImageView>
+            android:id="@+id/img_anh"
+            android:layout_width="100dp"
+            android:layout_height="130dp"></ImageView>
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
@@ -26,21 +24,22 @@
             android:text="Thời gian"
             android:textColor="#000000"
             android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/img_anh"
             android:fontFamily="@font/interlight"
-            android:layout_toEndOf="@+id/img_user"
+
             android:layout_marginStart="20dp"
             ></TextView>
         <TextView
             android:id="@+id/tv_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="360dp"
+            android:layout_height="60dp"
             android:textSize="16sp"
             android:textStyle="normal"
             android:textFontWeight="400"
             android:text="Content"
             android:textColor="#000000"
             android:fontFamily="@font/intersemibold"
-            android:layout_toEndOf="@id/img_user"
+            android:layout_toRightOf="@+id/img_anh"
             android:layout_marginTop="40dp"
             android:layout_marginStart="20dp"
             ></TextView>
@@ -50,11 +49,11 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textStyle="normal"
+            android:layout_toRightOf="@+id/img_anh"
             android:textFontWeight="400"
             android:text="Nội dung"
             android:textColor="#000000"
             android:fontFamily="@font/interlight"
-            android:layout_toEndOf="@id/img_user"
             android:layout_marginTop="100dp"
             android:layout_marginStart="20dp"
             ></TextView>
