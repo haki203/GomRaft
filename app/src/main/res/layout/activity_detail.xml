@@ -5,8 +5,42 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".DetailActivity"
-    android:padding="20dp">
+    android:padding="10dp">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/eva"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/tym"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+    <EditText
+        android:id="@+id/edtSearch"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edt"
+        android:drawableLeft="@drawable/search1"
+        android:ems="10"
+        android:fontFamily="@font/interregular"
+        android:hint="Search..."
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:textFontWeight="400"
+        android:textSize="18dp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -16,18 +50,28 @@
         android:textColor="#000000"
         android:textFontWeight="900"
         android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/cv"></TextView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv"
+        app:cardCornerRadius="33dp"
+        android:layout_width="350dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtSearch"
+        android:layout_height="350dp">
     <ImageView
         android:id="@+id/img_view"
         android:layout_width="350dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"></ImageView>
+        android:layout_height="350dp"
 
+        ></ImageView>
+    </androidx.cardview.widget.CardView>
     <TextView
         android:id="@+id/content"
         android:layout_width="350dp"
@@ -37,10 +81,11 @@
         android:textColor="#000000"
         android:textFontWeight="900"
         android:textSize="18dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_view"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/title"></TextView>
 
     <TextView
         android:id="@+id/creat_at"
@@ -51,6 +96,7 @@
         android:textColor="#000000"
         android:textFontWeight="900"
         android:textSize="16dp"
+        android:layout_marginLeft="10dp"
         android:textStyle="normal"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
